@@ -9,7 +9,7 @@
 	<key>CFBundleName</key>
 	<string>Bus Driver</string>
 	<key>CFBundleIdentifier</key>
-	<string>uk.co.scarthorpe.busdriver</string>
+	<string>uk.co.allthejohnsons.busdriver</string>
 	<key>CFBundleIconName</key>
 	<string>AppIcon</string>
 	<key>CFBundleShortVersionString</key>

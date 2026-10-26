@@ -8,7 +8,7 @@ Ready to paste into Play Console. Character limits are in brackets.
 | --- | --- |
 | App name (30) | Bus Driver: Scarthorpe Routes |
 | Short description (80) | Drive a British bus on sixteen routes. Keep the timetable, dodge the traffic. |
-| Application ID | uk.co.scarthorpe.busdriver |
+| Application ID | uk.co.allthejohnsons.busdriver |
 | Category | Games → Simulation |
 | Tags | Driving, Simulation, Single player, Offline |
 | Contains ads | No |

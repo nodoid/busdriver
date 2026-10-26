@@ -5,7 +5,7 @@ the source builds they were produced from.
 
 ```
 releases/
-  android/uk.co.scarthorpe.busdriver-1.0.aab   Android App Bundle for Play
+  android/uk.co.allthejohnsons.busdriver-1.0.aab   Android App Bundle for Play
   ios/BusDriver-1.0-ios-arm64-unsigned.ipa     iOS release build (sign before upload)
   screenshots/ios-6.9-inch/                    2868 x 1320 (App Store, 6.9-inch)
   screenshots/android-phone/                   1920 x 1080 (Play, phone)

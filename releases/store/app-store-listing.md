@@ -9,7 +9,7 @@ counts are noted where Apple enforces a limit.
 | --- | --- |
 | App name (30) | Bus Driver |
 | Subtitle (30) | The Scarthorpe Routes |
-| Bundle ID | uk.co.scarthorpe.busdriver |
+| Bundle ID | uk.co.allthejohnsons.busdriver |
 | Primary category | Games → Simulation |
 | Secondary category | Games → Racing |
 | Age rating | 4+ |

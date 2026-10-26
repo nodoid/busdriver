@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>BusDriver</AssemblyName>
     <RootNamespace>BusDriver.iOS</RootNamespace>
-    <ApplicationId>uk.co.scarthorpe.busdriver</ApplicationId>
+    <ApplicationId>uk.co.allthejohnsons.busdriver</ApplicationId>
     <ApplicationTitle>Bus Driver</ApplicationTitle>
     <ApplicationVersion>1</ApplicationVersion>
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
