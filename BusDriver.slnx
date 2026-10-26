@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/BusDriver.Android/BusDriver.Android.csproj" />
+    <Project Path="src/BusDriver.Core/BusDriver.Core.csproj" />
+    <Project Path="src/BusDriver.Game/BusDriver.Game.csproj" />
+    <Project Path="src/BusDriver.iOS/BusDriver.iOS.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/BusDriver.Core.Tests/BusDriver.Core.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,17 @@
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.idea/
+.DS_Store
+out/
+*.app/
+*.ipa
+*.apk
+TestResults/
+
+# Release artifacts are committed on purpose; keep them out of the ignore rules.
+!releases/
+!releases/**
+releases/.DS_Store

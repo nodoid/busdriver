@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Bus Driver</string>
+	<key>CFBundleName</key>
+	<string>Bus Driver</string>
+	<key>CFBundleIdentifier</key>
+	<string>uk.co.scarthorpe.busdriver</string>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>CFBundleExecutable</key>
+	<string>BusDriver</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MinimumOSVersion</key>
+	<string>18.0</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2026 Scarthorpe Games</string>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>LaunchImage</string>
+		<key>UIColorName</key>
+		<string>LaunchBackground</string>
+	</dict>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UIStatusBarHidden</key>
+	<true/>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+</dict>
+</plist>
