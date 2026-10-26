@@ -16,3 +16,6 @@ TestResults/
 !releases/**
 releases/.DS_Store
 .DS_Store
+
+# Signed release IPAs are built locally (~104 MB after AOT) - see releases/README.md
+releases/ios/*.ipa

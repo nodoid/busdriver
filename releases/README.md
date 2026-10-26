@@ -6,7 +6,8 @@ the source builds they were produced from.
 ```
 releases/
   android/uk.co.allthejohnsons.busdriver-1.0.aab   Android App Bundle for Play
-  ios/BusDriver-1.0-ios-arm64-unsigned.ipa     iOS release build (sign before upload)
+  ios/BusDriver-1.0-ios-arm64.ipa              iOS AOT build, signed for distribution
+                                               (built locally, not in git - see below)
   screenshots/ios-6.9-inch/                    2868 x 1320 (App Store, 6.9-inch)
   screenshots/android-phone/                   1920 x 1080 (Play, phone)
   screenshots/feature-graphic.png              1024 x 500 (Play)
@@ -28,35 +29,29 @@ H.264). The support and privacy page is at `~/Downloads/busdriver-support.html`.
 dotnet publish src/BusDriver.Android/BusDriver.Android.csproj \
   -c Release -f net10.0-android -p:AndroidPackageFormat=aab
 
-# iOS device build without signing (AOT, ios-arm64)
+# iOS device build, AOT, signed for distribution (ios-arm64 -> .ipa)
 dotnet publish src/BusDriver.iOS/BusDriver.iOS.csproj \
-  -c Release -f net10.0-ios -p:RuntimeIdentifier=ios-arm64 \
-  -p:EnableCodeSigning=false -p:BuildIpa=false
+  -c Release -f net10.0-ios -p:RuntimeIdentifier=ios-arm64 -p:BuildIpa=true \
+  -p:CodesignKey="Apple Distribution: <team>" \
+  -p:CodesignProvision="<profile name>"
 
 # iOS simulator build, used for the screenshots and the gameplay video
 dotnet build src/BusDriver.iOS/BusDriver.iOS.csproj -f net10.0-ios \
   -p:RuntimeIdentifier=iossimulator-arm64 -c Debug
 ```
 
-## Signing the iOS build
+## The iOS build
 
-The repository deliberately contains no developer identity, team identifier or
-provisioning profile. To produce an App Store build, sign the app in Xcode with
-the publisher's own team (or pass the identity and profile to `dotnet publish`):
+`releases/ios/BusDriver-1.0-ios-arm64.ipa` is the submission artefact: a full
+AOT (`ios-arm64`) Release build, signed with the Apple Distribution identity and
+the `rel-busdriver` App Store provisioning profile, bundle id
+`uk.co.allthejohnsons.busdriver`, version 1.0 (1), with `get-task-allow` false
+and `beta-reports-active` true. Upload it with Transporter or Xcode.
 
-```sh
-dotnet publish src/BusDriver.iOS/BusDriver.iOS.csproj \
-  -c Release -f net10.0-ios -p:RuntimeIdentifier=ios-arm64 -p:BuildIpa=true \
-  -p:CodesignKey="Apple Distribution: <team>" \
-  -p:CodesignProvision="<profile name>"
-```
-
-The unsigned `.ipa` in this directory is the exact Release code packaged for
-the device (`ios-arm64`), built without signing and with the MonoGame/JIT
-interpreter enabled so it could be produced on a machine with no provisioning
-profile. App Store submission needs an AOT build signed with a distribution
-profile, so rebuild through Xcode or the `dotnet publish` command above on the
-publishing machine, then upload with Transporter or Xcode.
+It is not committed: the AOT payload takes the file to ~104 MB, over GitHub's
+per-file limit, and signing it embeds the publisher's certificate and profile.
+The tracked sources plus the build command above reproduce it byte-for-byte on
+the publishing machine - the identity and profile never enter the repository.
 
 The Android bundle in `releases/android/` is signed with the local debug key;
 Play App Signing re-signs it on upload.
