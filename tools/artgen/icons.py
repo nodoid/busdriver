@@ -104,24 +104,49 @@ def write_json(path, data):
         f.write("\n")
 
 
+# Every icon slot App Store Connect validates, as (idiom, points, scale).
+# The single-size "universal 1024" catalog that Xcode 15+ writes is not
+# expanded into per-device renditions by the asset compiler the .NET iOS
+# build uses, which left the bundle with no icons at all and made Transporter
+# reject the upload; the classic full set always compiles.
+IOS_ICONS = [
+    ("iphone", "20x20", 2), ("iphone", "20x20", 3),
+    ("iphone", "29x29", 2), ("iphone", "29x29", 3),
+    ("iphone", "40x40", 2), ("iphone", "40x40", 3),
+    ("iphone", "60x60", 2), ("iphone", "60x60", 3),
+    ("ipad", "20x20", 1), ("ipad", "20x20", 2),
+    ("ipad", "29x29", 1), ("ipad", "29x29", 2),
+    ("ipad", "40x40", 1), ("ipad", "40x40", 2),
+    ("ipad", "76x76", 1), ("ipad", "76x76", 2),
+    ("ipad", "83.5x83.5", 2),
+    ("ios-marketing", "1024x1024", 1),
+]
+
+
 def generate_ios():
     base = app_icon(1024)
     iconset = os.path.join(IOS, "Assets.xcassets", "AppIcon.appiconset")
     os.makedirs(iconset, exist_ok=True)
 
-    # Xcode 27 wants a single 1024 universal icon; the old multi-size set is
-    # accepted but its legacy 1x phone entries are left unassigned.
     for name in os.listdir(iconset):
         if name.endswith(".png"):
             os.remove(os.path.join(iconset, name))
-    base.save(os.path.join(iconset, "AppIcon.png"), "PNG")
+
+    images = []
+    for idiom, points, scale in IOS_ICONS:
+        px = int(float(points.split("x")[0]) * scale)
+        filename = f"AppIcon-{idiom}-{points}@{scale}x.png"
+        base.resize((px, px), Image.LANCZOS).save(
+            os.path.join(iconset, filename), "PNG")
+        images.append({
+            "filename": filename,
+            "idiom": idiom,
+            "scale": f"{scale}x",
+            "size": points,
+        })
+
     write_json(os.path.join(iconset, "Contents.json"), {
-        "images": [{
-            "filename": "AppIcon.png",
-            "idiom": "universal",
-            "platform": "ios",
-            "size": "1024x1024",
-        }],
+        "images": images,
         "info": {"version": 1, "author": "xcode"},
     })
 

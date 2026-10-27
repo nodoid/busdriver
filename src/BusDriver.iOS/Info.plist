@@ -12,6 +12,10 @@
 	<string>uk.co.allthejohnsons.busdriver</string>
 	<key>CFBundleIconName</key>
 	<string>AppIcon</string>
+	<!-- Tells actool which asset catalogue entry is the app icon, so the
+	     compiled bundle gets CFBundleIcons and the per-device icon PNGs. -->
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
